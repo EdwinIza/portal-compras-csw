@@ -1,0 +1,19 @@
+<h2>Bienvenido al portal de compras</h2>
+<p>Encuentra una amplia selección de productos electrónicos de calidad.</p>
+
+<button *ngIf="!isLoggedIn" (click)="goToLogin()">Iniciar Sesión</button>
+<span *ngIf="isLoggedIn">{{ userFullName }}</span>
+
+<button *ngIf="isLoggedIn" (click)="goToProducts()">Ver Productos</button>
+<button *ngIf="isLoggedIn" (click)="goToCart()">Ir al Carrito</button>
+<button *ngIf="isLoggedIn" (click)="goToRegister()">Registrarse</button>
+<button *ngIf="isLoggedIn" (click)="logout()">Cerrar Sesión</button>
+
+<div class="product-container">
+    <div *ngFor="let product of products">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <button (click)="viewProductDetails(product.id)">Ver Detalle</button>
+    </div>
+</div>

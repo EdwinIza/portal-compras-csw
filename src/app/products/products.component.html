@@ -1,0 +1,22 @@
+<div class="search-filter">
+    <input type="text" [(ngModel)]="searchKeyword" (keyup)="search()" placeholder="Buscar productos">
+    <select [(ngModel)]="selectedCategory" (change)="filterByCategory(selectedCategory)">
+      <option value="all">Todas las categorías</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+  
+  <div class="product-list">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <!-- <img [src]="product.imageUrl" alt="Product Image"> -->
+      <h3>{{ product.name }}</h3>
+      <p>Precio: {{ product.price }}</p>
+      <button (click)="addToCart(product)">Agregar al carrito</button>
+    </div>
+  </div>
+  
+  <div class="sorting">
+    <button (click)="sortByName()">Ordenar por nombre</button>
+    <button (click)="sortByPrice()">Ordenar por precio</button>
+  </div>
+  
